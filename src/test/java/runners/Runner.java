@@ -11,8 +11,9 @@ import io.cucumber.testng.CucumberOptions;
                 "html:test-output/cucumber-reports/cucumberReport.html",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
         },
-        tags = "@smokeTest"
-        // alternatif usage ->> @homePageTest or @platformPageTest or @pricingPageTest or @joinPageTest
+        tags = "@pricingPageTest"
+        // alternatif usage for all ->> @homePageTest or @platformPageTest or @pricingPageTest or @joinPageTest
+        // alternatif usage for all ->> @smokeTest
 )
 public class Runner extends AbstractTestNGCucumberTests {
 

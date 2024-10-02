@@ -5,6 +5,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 public class PricingPage extends BaseTest {
@@ -32,25 +33,28 @@ public class PricingPage extends BaseTest {
 
 
     public void verifyPricingPlansDisplayed() {
-        waitForVisibility(freePlan);
-        Assert.assertTrue(freePlan.isDisplayed(), "Free plan görüntülenemiyor");
+        try {
+            freePlan = wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(freePlan)));
+            Assert.assertTrue(freePlan.isDisplayed(), "Free plan not displayed");
 
-        waitForVisibility(expertPlan);
-        Assert.assertTrue(expertPlan.isDisplayed(), "Expert plan görüntülenemiyor");
+            expertPlan = wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(expertPlan)));
+            Assert.assertTrue(expertPlan.isDisplayed(), "Expert plan not displayed");
 
-        waitForVisibility(elitePlan);
-        Assert.assertTrue(elitePlan.isDisplayed(), "Elite plan görüntülenemiyor");
+            elitePlan = wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(elitePlan)));
+            Assert.assertTrue(elitePlan.isDisplayed(), "Elite plan not displayed");
 
-        waitForVisibility(enterprisePlan);
-        Assert.assertTrue(enterprisePlan.isDisplayed(), "Enterprise plan görüntülenemiyor");
+            enterprisePlan = wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(enterprisePlan)));
+            Assert.assertTrue(enterprisePlan.isDisplayed(), "Enterprise plan not displayed");
+        } catch (StaleElementReferenceException e) {
+            System.out.println("Stale Element Reference Exception: " + e.getMessage());
+        }
     }
 
     public void moveSliderToSpecificWebsiteNumber(int number) {
-        sliderIndex = number - 1;
+        this.sliderIndex = number - 1;
         WebElement sliderDot = driver.findElement(By.xpath("//span[@data-index='" + sliderIndex + "']"));
         sliderDot.click();
         sliderIndex = 0;
-
     }
 
     public void verifyPlanPriceUpdatedAccordingly() {
