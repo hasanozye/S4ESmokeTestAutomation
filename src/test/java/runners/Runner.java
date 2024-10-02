@@ -11,7 +11,7 @@ import io.cucumber.testng.CucumberOptions;
                 "html:test-output/cucumber-reports/cucumberReport.html",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
         },
-        tags = "@pricingPageTest"
+        tags = "@smokeTest"
         // alternatif usage for all ->> @homePageTest or @platformPageTest or @pricingPageTest or @joinPageTest
         // alternatif usage for all ->> @smokeTest
 )
