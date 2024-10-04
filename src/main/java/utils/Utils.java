@@ -14,16 +14,6 @@ public class Utils {
 
     private static final String ENTER = "\n";
 
-
-    /**
-     * alinan screenshot'i byte[] olarak return ediyor
-     *
-     * @return screenshot in byte[]
-     */
-    public static byte[] getScreenShotAsByte() {
-        return ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
-    }
-
     /**
      * takescreenshots
      */

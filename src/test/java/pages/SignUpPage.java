@@ -59,13 +59,13 @@ public class SignUpPage extends BaseTest {
         waitForVisibility(confirmationRequiredText);
     }
     public String validPasswordGenerate(){
-        String upperCase = faker.letterify("?").toUpperCase();  // Tek büyük harf
-        String lowerCase = faker.letterify("?").toLowerCase();  // Tek küçük harf
-        String digit = faker.numerify("#");  // Tek rakam
+        String upperCase = faker.letterify("?").toUpperCase();  // Tek büyük harf, soru işartei sayısınca random harf dönüyor.
+        String lowerCase = faker.letterify("?").toLowerCase();  // Tek küçük harf, soru işartei sayısınca random harf dönüyor.
+        String digit = faker.numerify("#");  // Tek rakam, hashtag(diaz) sayısınca random sayı dönüyor
 
-        String remainingChars = faker.lorem().characters(5);
+        String remainingStr = faker.lorem().characters(5);
 
-        String validPassword = upperCase + lowerCase + digit + remainingChars;
+        String validPassword = upperCase + lowerCase + digit + remainingStr;
         return validPassword;
     }
 

@@ -30,11 +30,6 @@ public class BaseTest {
         faker = new Faker();
     }
 
-    public void click(By locator) {
-        WebElement webElement = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-        click(webElement);
-    }
-
     public void click(WebElement element) {
         wait.until(webDriver -> {
             try {
